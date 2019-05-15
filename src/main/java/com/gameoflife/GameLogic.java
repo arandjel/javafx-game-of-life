@@ -17,7 +17,6 @@ public class GameLogic {
 	private boolean[][] grid;
 
 	public GameLogic(int rowNum, int colNum) {
-		super();
 		this.rowNum = rowNum;
 		this.colNum = colNum;
 
