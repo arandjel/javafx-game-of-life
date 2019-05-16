@@ -9,6 +9,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.collections.*?>
+<?import java.lang.String?>
 
 
 <BorderPane prefHeight="700.0" prefWidth="600.0" fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gameoflife.GameController">
@@ -17,11 +19,17 @@
          <children>
             <HBox prefHeight="44.0" prefWidth="600.0">
                <children>
-                  <ChoiceBox prefHeight="26.0" prefWidth="135.0" />
+                  <ChoiceBox value="Random Seed" prefHeight="26.0" prefWidth="135.0" >
+			    	<items>
+			        	<FXCollections fx:factory="observableArrayList">
+		           	 		<String fx:value="Random Seed" />
+				        </FXCollections>
+			   	 	</items>
+				  </ChoiceBox>
                   <Button fx:id="startButton" text="Start" onAction="#handleStartButton" />
                   <Button fx:id="resetButton" text="Reset" onAction="#handleResetButton" />
                   <Button fx:id="nextButton" text="Next" onAction="#handleNextButton" />
-                  <Slider blockIncrement="3.0" majorTickUnit="15.0" min="15.0" max="60.0" value="15.0" minorTickCount="1" prefHeight="38.0" prefWidth="314.0" showTickLabels="true" showTickMarks="true" />
+                  <Slider fx:id="gridSize" blockIncrement="3.0" majorTickUnit="15.0" min="15.0" max="60.0" value="15.0" minorTickCount="4" snapToTicks="true" prefHeight="38.0" prefWidth="314.0" showTickLabels="true" showTickMarks="true" />
                </children>
             </HBox>
          </children>
