@@ -49,29 +49,38 @@ public class GameController implements Initializable {
 	@FXML
 	private void handleStartButton(ActionEvent event) {
 		if (isRunning) {
-			timeline.stop();
-			startButton.setText("Start");
+			stop();
 		}
 		else {
-			timeline.play();
-			startButton.setText("Stop");
+			start();
 		}
-		
-		isRunning = !isRunning;
 	}
 
 	@FXML
 	private void handleResetButton(ActionEvent event) {
-		timeline.stop();
+		stop();
 		gameLogic.randomPopulation(chance);
 		regenerateGrid();
 	}
 
 	@FXML
 	private void handleNextButton(ActionEvent event) {
-		timeline.stop();
+		stop();
 		gameLogic.next();
 		regenerateGrid();
+	}
+	
+	private void start() {
+		isRunning = true;
+		
+		timeline.play();
+		startButton.setText("Stop");
+	}
+	private void stop() {
+		isRunning = false;
+		
+		timeline.stop();
+		startButton.setText("Start");
 	}
 
 	private void handleSlider() {
